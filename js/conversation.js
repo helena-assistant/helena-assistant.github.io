@@ -138,6 +138,7 @@ var ConversationPanel = (function () {
 
   // Display a user or Watson message that has just been sent/received
   function displayMessage(newPayload, typeValue) {
+    console.log(newPayload, typeValue);
     var isUser = isUserMessage(typeValue);
     //var textExists = newPayload.generic;
     if ((newPayload.output && newPayload.output.generic) || newPayload.input) {

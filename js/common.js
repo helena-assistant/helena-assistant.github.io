@@ -7,7 +7,7 @@ var Common = (function () {
   return {
     buildDomElement: buildDomElementFromJson,
     fireEvent: fireEvent,
-    listForEach: listForEach
+    listForEach: listForEach,
   };
 
   // Take in JSON object and build a DOM element out of it
@@ -31,7 +31,7 @@ var Common = (function () {
     if (domJson.text) {
       element.innerHTML = domJson.text;
     } else if (domJson.html) {
-      element.insertAdjacentHTML('beforeend', domJson.html);
+      element.insertAdjacentHTML("beforeend", domJson.html);
     }
 
     // Add classes to the element
@@ -63,10 +63,10 @@ var Common = (function () {
     if (document.createEventObject) {
       // dispatch for IE
       evt = document.createEventObject();
-      return element.fireEvent('on' + event, evt);
+      return element.fireEvent("on" + event, evt);
     }
     // otherwise, dispatch for Firefox, Chrome + others
-    evt = document.createEvent('HTMLEvents');
+    evt = document.createEvent("HTMLEvents");
     evt.initEvent(event, true, true); // event type,bubbling,cancelable
     return !element.dispatchEvent(evt);
   }
@@ -77,4 +77,4 @@ var Common = (function () {
       callback.call(null, list[i]);
     }
   }
-}());
+})();

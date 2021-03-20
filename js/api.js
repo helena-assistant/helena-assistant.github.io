@@ -29,6 +29,16 @@ var Api = (function () {
 
   // Send a message request to the server
   function sendRequest(message) {
+    // Build request payload
+    var payloadToWatson = {
+      session_id: "abc-123",
+    };
+
+    payloadToWatson.input = {
+      message_type: "text",
+      text: message,
+    };
+
     // Built http request
     var http = new XMLHttpRequest();
     http.open("POST", messageEndpoint, true);
@@ -59,7 +69,15 @@ var Api = (function () {
       }
     };
 
+    var watsonParams = JSON.stringify(payloadToWatson);
     var params = JSON.stringify({ message });
+
+    // Stored in variable (publicly visible through Api.getRequestPayload)
+    // to be used throughout the application
+    if (Object.getOwnPropertyNames(payloadToWatson).length !== 0) {
+      Api.setRequestPayload(watsonParams);
+    }
+
     http.send(params);
   }
 })();
