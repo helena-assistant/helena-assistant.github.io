@@ -28,6 +28,20 @@ var ConversationPanel = (function () {
   function init() {
     chatUpdateSetup();
     setupInputBox();
+    Api.setResponsePayload(
+      JSON.stringify({
+        result: {
+          output: {
+            generic: [
+              {
+                response_type: "text",
+                text: "Olá, eu sou a Helena, como posso te ajudar?",
+              },
+            ],
+          },
+        },
+      })
+    );
   }
   // Set up callbacks on payload setters in Api module
   // This causes the displayMessage function to be called when messages are sent / received
