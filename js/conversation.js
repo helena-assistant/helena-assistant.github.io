@@ -310,13 +310,19 @@ var ConversationPanel = (function () {
         time: gen.time,
         typing: gen.typing,
       });
-    } else if (gen.response_type === "option") {
-      var preference = "text";
+    } else if (
+      gen.response_type === "option" ||
+      gen.response_type === "suggestion"
+    ) {
+      var preference = "button";
       if (gen.hasOwnProperty("preference")) {
         preference = gen.preference;
       }
 
-      var list = getOptions(gen.options, preference);
+      const optionsOrSuggestions =
+        gen.response_type === "option" ? gen.options : gen.suggestions;
+
+      var list = getOptions(optionsOrSuggestions, preference);
       responses.push({
         type: gen.response_type,
         innerhtml: title + description + list,
