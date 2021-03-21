@@ -113,7 +113,7 @@ var PayloadPanel = (function () {
         {
           // <div class='header-text'>
           tagName: "div",
-          text: isRequest ? "User input" : "Watson understands",
+          text: isRequest ? "Entrada do usuário: " : "Helena entende: ",
           classNames: ["header-text"],
         },
         {

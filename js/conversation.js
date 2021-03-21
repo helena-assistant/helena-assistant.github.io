@@ -35,7 +35,7 @@ var ConversationPanel = (function () {
             generic: [
               {
                 response_type: "text",
-                text: "Olá, eu sou a Helena, como posso te ajudar?",
+                text: "Olá! Eu sou a Helena, como posso te ajudar?",
               },
             ],
           },
