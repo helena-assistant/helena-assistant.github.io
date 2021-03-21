@@ -272,7 +272,7 @@ var ConversationPanel = (function () {
           if (optionsList[i].value) {
             var item =
               '<div class="options-button" onclick="ConversationPanel.sendMessage(\'' +
-              optionsList[i].value.input.text +
+              optionsList[i].label +
               "');\" >" +
               optionsList[i].label +
               "</div>";
