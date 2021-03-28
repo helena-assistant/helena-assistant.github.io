@@ -6,9 +6,15 @@ var Api = (function () {
   var messageEndpoint =
     "https://ip2g8nqfl8.execute-api.sa-east-1.amazonaws.com/dev/dialog";
 
+  var sessionEndpoint =
+    "https://ip2g8nqfl8.execute-api.sa-east-1.amazonaws.com/dev/session";
+
+  var sessionId = null;
+
   // Publicly accessible methods defined
   return {
     sendRequest: sendRequest,
+    getSessionId: getSessionId,
 
     // The request/response getters/setters are defined here to prevent internal methods
     // from calling the methods without any of the callbacks that are added elsewhere.
@@ -27,11 +33,25 @@ var Api = (function () {
     setErrorPayload: function () {},
   };
 
+  function getSessionId(callback) {
+    var http = new XMLHttpRequest();
+    http.open("GET", sessionEndpoint, true);
+    http.setRequestHeader("Content-type", "application/json");
+    http.onreadystatechange = function () {
+      if (http.readyState === XMLHttpRequest.DONE) {
+        let res = JSON.parse(http.response);
+        sessionId = res.sessionId;
+        callback();
+      }
+    };
+    http.send();
+  }
+
   // Send a message request to the server
   function sendRequest(message) {
     // Build request payload
     var payloadToWatson = {
-      session_id: "abc-123",
+      session_id: sessionId,
     };
 
     payloadToWatson.input = {
@@ -70,7 +90,7 @@ var Api = (function () {
     };
 
     var watsonParams = JSON.stringify(payloadToWatson);
-    var params = JSON.stringify({ message });
+    var params = JSON.stringify({ message, sessionId });
 
     // Stored in variable (publicly visible through Api.getRequestPayload)
     // to be used throughout the application

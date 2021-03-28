@@ -28,6 +28,7 @@ var ConversationPanel = (function () {
   function init() {
     chatUpdateSetup();
     setupInputBox();
+    Api.getSessionId(function () {});
     Api.setResponsePayload(
       JSON.stringify({
         result: {
