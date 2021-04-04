@@ -179,7 +179,8 @@ var ConversationPanel = (function () {
     if (index < responses.length) {
       var res = responses[index];
       if (res.type !== "pause") {
-        var currentDiv = getDivObject(res, isUser, isTop);
+        const isOptionButtons = res.type === "option"
+        var currentDiv = getDivObject(res, isUser, isTop, isOptionButtons);
         chatBoxElement.appendChild(currentDiv);
         // Class to start fade in animation
         currentDiv.classList.add("load");
@@ -188,11 +189,13 @@ var ConversationPanel = (function () {
           // wait a sec before scrolling
           scrollToChatBottom();
         }, 1000);
-        setResponse(responses, isUser, chatBoxElement, index + 1, false);
+        setTimeout(() => {
+          setResponse(responses, isUser, chatBoxElement, index + 1, false);
+        },1000)
       } else {
         var userTypringField = document.getElementById("user-typing-field");
         if (res.typing) {
-          userTypringField.innerHTML = "Watson Assistant Typing...";
+          userTypringField.innerHTML = "Helena está digitando...";
         }
         setTimeout(function () {
           userTypringField.innerHTML = "";
@@ -203,12 +206,14 @@ var ConversationPanel = (function () {
   }
 
   // Constructs new DOM element from a message
-  function getDivObject(res, isUser, isTop) {
+  function getDivObject(res, isUser, isTop, optionButtons=false) {
     var classes = [
       isUser ? "from-user" : "from-watson",
       "latest",
       isTop ? "top" : "sub",
     ];
+
+    const messageClassNames = optionButtons ?  ["option-button-container"] : ["message-inner"]
     var messageJson = {
       // <div class='segments'>
       tagName: "div",
@@ -222,7 +227,7 @@ var ConversationPanel = (function () {
             {
               // <div class='message-inner'>
               tagName: "div",
-              classNames: ["message-inner"],
+              classNames: messageClassNames,
               children: [
                 {
                   // <p>{messageText}</p>
@@ -235,6 +240,7 @@ var ConversationPanel = (function () {
         },
       ],
     };
+
     return Common.buildDomElement(messageJson);
   }
 
@@ -301,10 +307,13 @@ var ConversationPanel = (function () {
         innerhtml: title + description + img,
       });
     } else if (gen.response_type === "text") {
-      responses.push({
-        type: gen.response_type,
-        innerhtml: gen.text,
-      });
+      const parsedTexts = gen.text.split("\n\n")
+      parsedTexts.forEach(text => {
+        responses.push({
+          type: gen.response_type,
+          innerhtml: text,
+        });
+      })
     } else if (gen.response_type === "pause") {
       responses.push({
         type: gen.response_type,
@@ -324,9 +333,15 @@ var ConversationPanel = (function () {
         gen.response_type === "option" ? gen.options : gen.suggestions;
 
       var list = getOptions(optionsOrSuggestions, preference);
+
       responses.push({
         type: gen.response_type,
-        innerhtml: title + description + list,
+        innerhtml: title + description,
+      });
+
+      responses.push({
+        type: "option",
+        innerhtml: list,
       });
     }
   }

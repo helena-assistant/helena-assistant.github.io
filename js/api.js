@@ -81,7 +81,7 @@ var Api = (function () {
               {
                 response_type: "text",
                 text:
-                  "I'm having trouble connecting to the server, please refresh the page",
+                  "Eu estou tendo problemas em me conectar com o servidor. Por favor, recarregue a página :(",
               },
             ],
           },

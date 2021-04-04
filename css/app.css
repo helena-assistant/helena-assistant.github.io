@@ -99,6 +99,7 @@ div {
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1;
+  padding: 20px;
 }
 
 .message-inner {
@@ -128,6 +129,7 @@ div {
 
 .from-user {
   text-align: right;
+  margin: 7px 0;
 }
 
 .from-user .message-inner {
@@ -138,7 +140,7 @@ div {
   line-height: 1.3125rem;
   background: #00b4a0;
   border-radius: 1.25rem;
-  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   text-align: left;
   display: inline-block;
   margin-left: 2.5rem;
@@ -175,37 +177,39 @@ div {
   border-top-right-radius: 1.25rem;
 }
 
-.from-watson,
 .message-inner {
   position: relative;
-  border-radius: 1.5625rem;
   font-size: 1rem;
-  color: #b5b5b5;
+  color: #fff;
   letter-spacing: 0.015rem;
-  line-height: 1.3125rem;
+  line-height: inherit;
+  background: #5972ac;
+  border-radius: 1.25rem;
+  border-top-left-radius: 0;
+  display: inline-block;
+  margin-top: 0.5rem;
+  min-width: 2.5rem;
 }
 
-.from-watson.latest .message-inner {
-  color: #323232;
+.options-button-container {
+  position: relative;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: 0.015rem;
+  line-height: inherit;
+  border-radius: 1.25rem;
+  border-top-left-radius: 0;
+  display: inline-block;
+  margin-top: 0.5rem;
+  min-width: 2.5rem;
 }
+
 
 .from-watson p {
   margin: 0.3125rem;
-  padding: 14px 1.25rem;
+  padding: 4px 0.9375rem;
 }
 
-.from-watson.latest.top p:before {
-  content: ".";
-  color: #9855d4;
-  background-image: url("../img/marker_image.png");
-  background-size: 0.3125rem 1.3125rem;
-  position: absolute;
-  z-index: 2;
-  left: 0.4375rem;
-  width: 0.3125rem;
-  height: 1.3125rem;
-  line-height: 1.3125rem;
-}
 
 #textInput {
   border: none;
@@ -461,12 +465,12 @@ html {
 
 .options-button {
   color: white;
-  background-color: #8d25e8;
+  background-color: #6b8fd2;
   border-radius: 6px;
-  padding-bottom: 4px;
-  padding-top: 4px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-bottom: 7px;
+  padding-top: 7px;
+  padding-left: 14px;
+  padding-right: 15px;
   margin: 3px;
   cursor: pointer;
   display: inline-block;
