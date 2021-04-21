@@ -35,9 +35,27 @@ var ConversationPanel = (function () {
           output: {
             generic: [
               {
-                response_type: "text",
-                text: "Olá! Eu sou a Helena, como posso te ajudar?",
-              },
+                response_type: "suggestion",
+                title: "Olá! Eu sou a Helena!\n\nComo posso te ajudar?",
+                suggestions: [
+                  {
+                    label: "Abater Horas ATV",
+                    value: true,
+                  },
+                  {
+                    label: "Colação de Grau",
+                    value: true,
+                  },
+                  {
+                    label: "Carteirinha Estudantil",
+                    value: true,
+                  },
+                  {
+                    label: "Trancamento de Disciplina",
+                    value: true,
+                  },                         
+                ]
+              },  
             ],
           },
         },
@@ -331,13 +349,20 @@ var ConversationPanel = (function () {
 
       const optionsOrSuggestions =
         gen.response_type === "option" ? gen.options : gen.suggestions;
+        
 
-      var list = getOptions(optionsOrSuggestions, preference);
+      const list = getOptions(optionsOrSuggestions, preference);
 
-      responses.push({
-        type: gen.response_type,
-        innerhtml: title + description,
-      });
+
+      const text =  title + description
+      const parsedTexts = text.split("\n\n")
+
+      parsedTexts.forEach(text => {
+        responses.push({
+          type: gen.response_type,
+          innerhtml: text,
+        });
+      })
 
       responses.push({
         type: "option",
