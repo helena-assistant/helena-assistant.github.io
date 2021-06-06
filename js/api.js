@@ -1,13 +1,9 @@
 // The Api module is designed to handle all interactions with the server
 
 var Api = (function () {
+  var route = "https://sn009i5l2l.execute-api.sa-east-1.amazonaws.com";
   var requestPayload;
   var responsePayload;
-  var messageEndpoint =
-    "https://ip2g8nqfl8.execute-api.sa-east-1.amazonaws.com/dev/dialog";
-
-  var sessionEndpoint =
-    "https://ip2g8nqfl8.execute-api.sa-east-1.amazonaws.com/dev/session";
 
   var sessionId = null;
 
@@ -35,7 +31,7 @@ var Api = (function () {
 
   function getSessionId(callback) {
     var http = new XMLHttpRequest();
-    http.open("GET", sessionEndpoint, true);
+    http.open("GET", `${route}/dev/session`, true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
       if (http.readyState === XMLHttpRequest.DONE) {
@@ -61,7 +57,7 @@ var Api = (function () {
 
     // Built http request
     var http = new XMLHttpRequest();
-    http.open("POST", messageEndpoint, true);
+    http.open("POST", `${route}/dev/dialog`, true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
       console.log(http.response);
@@ -80,8 +76,7 @@ var Api = (function () {
             generic: [
               {
                 response_type: "text",
-                text:
-                  "Eu estou tendo problemas em me conectar com o servidor.\n\nPor favor, recarregue a página :(",
+                text: "Eu estou tendo problemas em me conectar com o servidor.\n\nPor favor, recarregue a página :(",
               },
             ],
           },
