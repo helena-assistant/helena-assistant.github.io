@@ -1,50 +1,58 @@
 <html>
-  <head>
-    <base href="/" />
-    <title>Watson Assistant Chat App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta property="og:image" content="conversation.svg" />
-    <meta property="og:title" content="Conversation Chat Simple" />
-    <meta
-      property="og:description"
-      content="Sample application that shows how to use the Watson Assistant API to identify user intents"
-    />
-    <link rel="shortcut icon" href="favicon.png" type="image/png" />
-    <link rel="stylesheet" href="css/app.css" />
-  </head>
 
-  <body>
-    <div
-      id="view-change-button"
-      class="button"
-      onclick="PayloadPanel.togglePanel(event, this)"
-    >
+<head>
+  <base href="/" />
+  <title>Helena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta property="og:image" content="conversation.svg" />
+  <meta property="og:title" content="Conversation Chat Simple" />
+  <meta property="og:description"
+    content="Helena é um chatbot projetado para ajudar os alunos da UFOP em questões acadêmicas" />
+  <link rel="shortcut icon" href="helena-logo.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+
+<body>
+
+  <div class="presentation">
+    <h1 class="presentation-title">Olá! Essa é a Helena</h1>
+    <p class="presentation-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo justo, vehicula eu massa laoreet, faucibus
+      consequat
+      nulla. Fusce rhoncus purus sem, id dignissim sapien vestibulum sed. Nulla lacinia finibus varius. Suspendisse et
+      libero
+      sit amet libero ullamcorper mollis. Mauris dui quam, volutpat fermentum rutrum quis, mattis vitae dolor.
+      Suspendisse
+      purus sapien, efficitur ac mi vel, feugiat bibendum risus. Sed pulvinar elit porttitor sollicitudin tempus. Etiam
+      sed
+      ligula augue. Sed massa ex, laoreet quis mi ut, mattis ultricies ante. Duis blandit mi ac nibh dapibus, et
+      lobortis
+      augue sodales. Donec ut posuere magna. Aliquam molestie lorem et efficitur pellentesque. Fusce tincidunt lacus in
+      semper
+      maximus. Donec ut ultricies erat. Cras mattis condimentum tellus nec consequat.
+    </p>
+  </div>
+
+  <div class="dialog-container">
+    <!-- <div id="view-change-button" class="button" onclick="PayloadPanel.togglePanel(event, this)">
       <img class="option full" src="../img/Chat Button.png" />
       <img class="option not-full" src="../img/Code Button.png" />
-    </div>
+    </div> -->
     <div id="contentParent" class="responsive-columns-wrapper">
       <div id="chat-column-holder" class="responsive-column content-column">
         <div class="chat-column">
           <div id="scrollingChat"></div>
           <p class="user-typing" id="user-typing-field"></p>
           <label for="textInput" class="inputOutline">
-            <input
-              id="textInput"
-              class="input responsive-column"
-              placeholder="Escreva algo..."
-              type="text"
-              onkeydown="ConversationPanel.inputKeyDown(event, this)"
-              autofocus
-            />
+            <input id="textInput" class="input responsive-column" placeholder="Escreva algo..." type="text"
+              onkeydown="ConversationPanel.inputKeyDown(event, this)" autofocus />
           </label>
           <div class="disclaimer">
             Usando esta aplicação, você concorda com os termos de uso&nbsp;
-            <a
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://watson-developer-cloud.github.io/terms?name=Watson%20Assistant%20Demo"
-            >
+            <a target="_blank" rel="noreferrer noopener"
+              href="https://watson-developer-cloud.github.io/terms?name=Watson%20Assistant%20Demo">
               Termos de uso
             </a>
           </div>
@@ -56,15 +64,39 @@
         <div id="payload-response" class="payload"></div>
       </div>
     </div>
+  </div>
 
-    <script src="js/common.js"></script>
-    <script src="js/api.js"></script>
-    <script src="js/conversation.js"></script>
-    <script src="js/payload.js"></script>
-    <script src="js/global.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.rawgit.com/watson-developer-cloud/watson-developer-cloud.github.io/master/analytics.js"
-    ></script>
-  </body>
+  <section class="rating">
+    <h2 class="rating-title">O que achou da experiência? </h2>
+    <div class="star-widget">
+      <input type="radio" name="rate" id="rate-5">
+      <label for="rate-5" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-4">
+      <label for="rate-4" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-3">
+      <label for="rate-3" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-2">
+      <label for="rate-2" class="fas fa-star"></label>
+      <input type="radio" name="rate" id="rate-1">
+      <label for="rate-1" class="fas fa-star"></label>
+    </div>
+    <form action="#">
+      <div class="btn">
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </section>
+
+  <footer class="footer">
+    Feito com s2 por Guilherme Monteiro
+  </footer>
+
+
+  <script src="js/common.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/conversation.js"></script>
+  <script src="js/payload.js"></script>
+  <script src="js/global.js"></script>
+</body>
+
 </html>

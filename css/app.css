@@ -9,6 +9,22 @@ body {
     sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #0e0e0e;
+  color: darkgrey;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #0e0e0e;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: #0e0e0e;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #0e0e0e;
 }
 
 div {
@@ -100,6 +116,20 @@ div {
   overflow-x: hidden;
   flex: 1;
   padding: 20px;
+}
+
+#scrollingChat::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #1a1e1f;
+}
+
+#scrollingChat::-webkit-scrollbar {
+  width: 10px;
+  background-color: #1a1e1f;
+}
+
+#scrollingChat::-webkit-scrollbar-thumb {
+  background-color: #1a1e1f;
 }
 
 .message-inner {
@@ -204,19 +234,17 @@ div {
   min-width: 2.5rem;
 }
 
-
 .from-watson p {
   margin: 0.3125rem;
   padding: 4px 0.9375rem;
 }
-
 
 #textInput {
   border: none;
   outline: none;
   background: transparent;
   font-size: 1rem;
-  color: #323232;
+  color: darkgrey;
   letter-spacing: 0.015rem;
   line-height: 1.3125rem;
   height: 2.5rem;
@@ -474,4 +502,90 @@ html {
   margin: 3px;
   cursor: pointer;
   display: inline-block;
+}
+
+.presentation {
+  margin-top: 32px;
+  text-align: center;
+  padding: 32px;
+}
+
+.presentation-title {
+  font-size: 64px;
+}
+
+.presentation-description {
+  padding: 16px;
+  font-size: 18px;
+  line-height: 2em;
+}
+
+.dialog-container {
+  margin: 70px;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 16px;
+  background-color: #1a1e1f;
+}
+
+.rating {
+  margin: 32px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  text-align: center;
+}
+
+.rating .rating-title {
+  font-size: 45px;
+}
+
+.rating button {
+  background-color: #66b7ff;
+  width: 150px;
+  border-color: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  margin-top: 37px;
+}
+
+.star-widget {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.star-widget input {
+  display: none;
+}
+
+.star-widget label {
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: #fd4;
+}
+input:checked ~ label {
+  color: #fd4;
+}
+input#rate-5:checked ~ label {
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  text-align: center;
+  background-color: #1a1e1f;
 }
