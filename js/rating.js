@@ -8,14 +8,15 @@ const rate5 = document.getElementById("rate-5");
 
 const rates = [rate1, rate2, rate3, rate4, rate5];
 
-const sendRating = () => {
+const sendRating = (event) => {
+  event.preventDefault();
   const selectedRate = rates.filter((rate) => rate.checked)[0];
   const params = JSON.stringify({ rate: selectedRate.value });
 
   const http = new XMLHttpRequest();
   http.open("POST", `${route}/dev/rate`, true);
   http.setRequestHeader("Content-type", "application/json");
-  http.onreadystatechange = function () {
+  http.onreadystatechange = () => {
     if (http.readyState === XMLHttpRequest.DONE) {
       let res = JSON.parse(http.response);
       console.log(res);
@@ -24,3 +25,6 @@ const sendRating = () => {
 
   http.send(params);
 };
+
+const rateForm = document.getElementById("rate-form");
+rateForm.addEventListener("submit", sendRating);
