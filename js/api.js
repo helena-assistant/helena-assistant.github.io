@@ -60,7 +60,6 @@ var Api = (function () {
     http.open("POST", `${route}/dev/dialog`, true);
     http.setRequestHeader("Content-type", "application/json");
     http.onreadystatechange = function () {
-      console.log(http.response);
       if (
         http.readyState === XMLHttpRequest.DONE &&
         http.status === 200 &&

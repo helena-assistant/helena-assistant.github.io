@@ -53,9 +53,9 @@ var ConversationPanel = (function () {
                   {
                     label: "Trancamento de Disciplina",
                     value: true,
-                  },                         
-                ]
-              },  
+                  },
+                ],
+              },
             ],
           },
         },
@@ -171,7 +171,6 @@ var ConversationPanel = (function () {
 
   // Display a user or Watson message that has just been sent/received
   function displayMessage(newPayload, typeValue) {
-    console.log(newPayload, typeValue);
     var isUser = isUserMessage(typeValue);
     //var textExists = newPayload.generic;
     if ((newPayload.output && newPayload.output.generic) || newPayload.input) {
@@ -197,7 +196,7 @@ var ConversationPanel = (function () {
     if (index < responses.length) {
       var res = responses[index];
       if (res.type !== "pause") {
-        const isOptionButtons = res.type === "option"
+        const isOptionButtons = res.type === "option";
         var currentDiv = getDivObject(res, isUser, isTop, isOptionButtons);
         chatBoxElement.appendChild(currentDiv);
         // Class to start fade in animation
@@ -209,7 +208,7 @@ var ConversationPanel = (function () {
         }, 1000);
         setTimeout(() => {
           setResponse(responses, isUser, chatBoxElement, index + 1, false);
-        },1000)
+        }, 1000);
       } else {
         var userTypringField = document.getElementById("user-typing-field");
         if (res.typing) {
@@ -224,14 +223,16 @@ var ConversationPanel = (function () {
   }
 
   // Constructs new DOM element from a message
-  function getDivObject(res, isUser, isTop, optionButtons=false) {
+  function getDivObject(res, isUser, isTop, optionButtons = false) {
     var classes = [
       isUser ? "from-user" : "from-watson",
       "latest",
       isTop ? "top" : "sub",
     ];
 
-    const messageClassNames = optionButtons ?  ["option-button-container"] : ["message-inner"]
+    const messageClassNames = optionButtons
+      ? ["option-button-container"]
+      : ["message-inner"];
     var messageJson = {
       // <div class='segments'>
       tagName: "div",
@@ -325,13 +326,13 @@ var ConversationPanel = (function () {
         innerhtml: title + description + img,
       });
     } else if (gen.response_type === "text") {
-      const parsedTexts = gen.text.split("\n\n")
-      parsedTexts.forEach(text => {
+      const parsedTexts = gen.text.split("\n\n");
+      parsedTexts.forEach((text) => {
         responses.push({
           type: gen.response_type,
           innerhtml: text,
         });
-      })
+      });
     } else if (gen.response_type === "pause") {
       responses.push({
         type: gen.response_type,
@@ -349,20 +350,18 @@ var ConversationPanel = (function () {
 
       const optionsOrSuggestions =
         gen.response_type === "option" ? gen.options : gen.suggestions;
-        
 
       const list = getOptions(optionsOrSuggestions, preference);
 
+      const text = title + description;
+      const parsedTexts = text.split("\n\n");
 
-      const text =  title + description
-      const parsedTexts = text.split("\n\n")
-
-      parsedTexts.forEach(text => {
+      parsedTexts.forEach((text) => {
         responses.push({
           type: gen.response_type,
           innerhtml: text,
         });
-      })
+      });
 
       responses.push({
         type: "option",

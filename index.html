@@ -69,18 +69,18 @@
   <section class="rating">
     <h2 class="rating-title">O que achou da experiência? </h2>
     <div class="star-widget">
-      <input type="radio" name="rate" id="rate-5">
+      <input type="radio" name="rate" id="rate-5" value="5">
       <label for="rate-5" class="fas fa-star"></label>
-      <input type="radio" name="rate" id="rate-4">
+      <input type="radio" name="rate" id="rate-4" value="4">
       <label for="rate-4" class="fas fa-star"></label>
-      <input type="radio" name="rate" id="rate-3">
+      <input type="radio" name="rate" id="rate-3" value="3">
       <label for="rate-3" class="fas fa-star"></label>
-      <input type="radio" name="rate" id="rate-2">
+      <input type="radio" name="rate" id="rate-2" value="2">
       <label for="rate-2" class="fas fa-star"></label>
-      <input type="radio" name="rate" id="rate-1">
+      <input type="radio" name="rate" id="rate-1" value="1">
       <label for="rate-1" class="fas fa-star"></label>
     </div>
-    <form action="#">
+    <form onsubmit="sendRating()">
       <div class="btn">
         <button type="submit">Enviar</button>
       </div>
@@ -91,7 +91,7 @@
     Feito com s2 por Guilherme Monteiro
   </footer>
 
-
+  <script src="js/rating.js"></script>
   <script src="js/common.js"></script>
   <script src="js/api.js"></script>
   <script src="js/conversation.js"></script>
