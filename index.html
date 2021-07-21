@@ -17,21 +17,11 @@
 <body>
 
   <div class="presentation">
-    <h1 class="presentation-title">Olá! Essa é a Helena</h1>
+    <h1 class="presentation-title">Olá! Essa é a Helena!</h1>
     <p class="presentation-description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis leo justo, vehicula eu massa laoreet, faucibus
-      consequat
-      nulla. Fusce rhoncus purus sem, id dignissim sapien vestibulum sed. Nulla lacinia finibus varius. Suspendisse et
-      libero
-      sit amet libero ullamcorper mollis. Mauris dui quam, volutpat fermentum rutrum quis, mattis vitae dolor.
-      Suspendisse
-      purus sapien, efficitur ac mi vel, feugiat bibendum risus. Sed pulvinar elit porttitor sollicitudin tempus. Etiam
-      sed
-      ligula augue. Sed massa ex, laoreet quis mi ut, mattis ultricies ante. Duis blandit mi ac nibh dapibus, et
-      lobortis
-      augue sodales. Donec ut posuere magna. Aliquam molestie lorem et efficitur pellentesque. Fusce tincidunt lacus in
-      semper
-      maximus. Donec ut ultricies erat. Cras mattis condimentum tellus nec consequat.
+      Helena é um chatbot feito por integrantes do Departamento de Ciência da Computação (DECOM) da Universidade Federa
+      de Ouro Preto (UFOP) que tem o objetivo de ajudar os alunos de graduação a em dúvidas relacionadas às questões
+      acadêmicas. Se sinta livre para interagir com ela!
     </p>
   </div>
 
@@ -47,7 +37,7 @@
           <p class="user-typing" id="user-typing-field"></p>
           <label for="textInput" class="inputOutline">
             <input id="textInput" class="input responsive-column" placeholder="Escreva algo..." type="text"
-              onkeydown="ConversationPanel.inputKeyDown(event, this)" autofocus />
+              onkeydown="ConversationPanel.inputKeyDown(event, this)" />
           </label>
           <div class="disclaimer">
             Usando esta aplicação, você concorda com os termos de uso&nbsp;
@@ -66,8 +56,11 @@
     </div>
   </div>
 
-  <section class="rating">
-    <h2 class="rating-title">O que achou da experiência? </h2>
+  <div id='rating-container' class="rating">
+    <div>
+      <h2 class="rating-title">O que achou da experiência? </h2>
+      <h3>Seria muito importante para nós que você avaliasse como foi a interação com Helena até agora</h3>
+    </div>
     <div class="star-widget">
       <input type="radio" name="rate" id="rate-5" value="5">
       <label for="rate-5" class="fas fa-star"></label>
@@ -85,7 +78,10 @@
         <button type="submit">Enviar</button>
       </div>
     </form>
-  </section>
+    <div id="submit-success">
+      Muito obrigado pela sua avaliação :)
+    </div>
+  </div>
 
   <footer class="footer">
     Feito com s2 por Guilherme Monteiro

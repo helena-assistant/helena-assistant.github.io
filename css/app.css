@@ -533,7 +533,7 @@ html {
   height: 400px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 16px;
   text-align: center;
 }
@@ -588,4 +588,9 @@ footer {
   height: 200px;
   text-align: center;
   background-color: #1a1e1f;
+}
+
+#submit-success {
+  display: none;
+  font-size: 28px;
 }
