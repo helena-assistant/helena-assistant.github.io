@@ -68,6 +68,11 @@ var Api = (function () {
         Api.setResponsePayload(http.responseText);
       } else if (
         http.readyState === XMLHttpRequest.DONE &&
+        http.status === 404
+      ) {
+        getSessionId(() => sendRequest(message));
+      } else if (
+        http.readyState === XMLHttpRequest.DONE &&
         http.status !== 200
       ) {
         Api.setErrorPayload({
