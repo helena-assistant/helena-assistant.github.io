@@ -594,3 +594,13 @@ footer {
   display: none;
   font-size: 28px;
 }
+
+.intentions-listing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.intentions-listing li {
+  margin-bottom: 15px;
+}
