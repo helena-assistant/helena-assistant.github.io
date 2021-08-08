@@ -607,8 +607,9 @@ footer {
 
 @media only screen and (max-width: 768px) {
   .presentation-title {
-    font-size: 3.5em;
+    font-size: 3.95em;
     line-height: 1.5em;
+    text-align: center;
    }
 
    .rating .rating-title {
@@ -626,5 +627,9 @@ footer {
   .dialog-container {
     margin: 15px 5px;
     padding: 0px;
+  }
+
+  .presentation-description{
+    text-align: left;
   }
 }
